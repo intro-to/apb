@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <title>Work Showcase Slideshow</title> -->
+  <style>
+    .slideshow-container {
+      position: relative;
+      max-width: 800px;
+      max-height: fit-content;
+      margin: auto;
+      background-color: #f7a4a4;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+    }
+
+    .slide {
+      display: none;
+      text-align: center; /* Center the content */
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .caption {
+      position: absolute;
+      bottom: 20px; /* Adjust the distance from the bottom */
+      left: 50%;
+      transform: translateX(-50%); /* Center horizontally */
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+       }
+
+       .caption p {
+      font-size: 18px; /* Increase font size */
+      margin-bottom: 10px; /* Add some space below the paragraph */
+    }
+
+    .caption ul {
+      list-style-type: none; /* Remove bullet points */
+      padding: 0;
+      margin: 0;
+    }
+
+    .caption ul li {
+      font-size: 16px; /* Adjust font size */
+      margin-bottom: 5px; /* Add some space between list items */
+    }
+
+    /* Next & previous buttons */
+    .prev, .next {
+      cursor: pointer;
+      position: absolute;
+      top: 50%;
+      width: auto;
+      margin-top: -22px;
+      padding: 16px;
+      color: white;
+      font-weight: bold;
+      font-size: 20px;
+      transition: 7m ease;
+      border-radius: 0 3px 3px 0;
+    }
+
+    .next {
+      right: 0;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .prev:hover, .next:hover {
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="slideshow-container">
+    <div class="slide fade">
+      <!-- <img src="work1.jpg" alt="Work 1"> -->
+      <!-- <div class="caption">introduction to html </div> -->
+      <p>Basics of HTML:</p>
+      <ul>
+        <li>HTML attributes</li>
+        <li>Syntax: <code>&lt;h1&gt;&lt;/h1&gt;</code>, <br><code>&lt;h2&gt;&lt;/h2&gt;</code>, <br><code>&lt;h6&gt;&lt;/h6&gt;</code>, <code>&lt;p&gt;&lt;/p&gt;</code>, <br><code>&lt;a&gt;&lt;/a&gt;</code>, <code>&lt;br&gt;</code>, <code>&lt;img&gt;</code></li>
+      </ul>
+    </div>
+    <div class="slide fade">
+      <!-- <img src="work2.jpg" alt="Work 2">
+      <div class="caption">introduction to css</div> -->
+      <p>CSS Selectors:</p>
+      <ul>
+        <li>Selectors are used to target HTML elements and apply styles to them.</li>
+        <li>Examples of selectors include element selectors (p, h1, div), class selectors (.classname), ID selectors (#idname), and more.</li>
+      </ul>
+      <p>Properties and Values:</p>
+      <ul>
+        <li>CSS properties define how HTML elements should be styled.</li>
+        <li>Each property has one or more values, which specify how the property should be applied.</li>
+        <li>Examples of properties include color, font-size, background-color, margin, padding, etc.</li>
+      </ul>
+      <p>Layout:</p>
+      <ul>
+        <li>CSS allows you to control the layout of a webpage, including the arrangement of elements, alignment, and positioning.</li>
+        <li>Techniques like floats, flexbox, and grid layout are commonly used for layout purposes.</li>
+      </ul>
+      <p>Frameworks and Libraries:</p>
+      <ul>
+        <li>CSS frameworks like Bootstrap and Foundation provide pre-designed CSS styles and components to help build websites quickly.</li>
+        <li>CSS libraries like Normalize.css and Reset CSS provide consistent styling across different browsers by resetting or normalizing default styles.</li>
+      </ul>
+    </div>
+    <div class="slide fade">
+      <!-- <img src="work3.jpg" alt="Work 3">
+      <div class="caption">introducion to bootstrap</div> -->
+      <p>Key Features of Bootstrap:</p>
+      <ul>
+        <li>Responsive Grid System: Bootstrap provides a responsive, mobile-first grid system that allows you to create layouts that adapt to various screen sizes and devices.</li>
+        <li>Pre-styled Components: Bootstrap includes a wide range of pre-styled components, such as buttons, forms, navigation bars, and cards.</li>
+        <li>CSS Flexbox and Grid Utilities: Bootstrap provides utility classes for CSS Flexbox and CSS Grid, allowing you to quickly align and position elements within your layout.</li>
+        <li>Customizable Styles: Bootstrap allows you to customize its styles to match your project's branding and design requirements using SASS variables and mixins.</li>
+      </ul> 
+    </div>
+
+    <!-- Next and previous buttons -->
+    <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+    <a class="next" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+
+  <script>
+    let slideIndex = 0;
+    showSlides();
+
+    function plusSlides(n) {
+      showSlides(slideIndex += n);
+    }
+
+    function showSlides() {
+      let i;
+      let slides = document.getElementsByClassName("slide");
+      if (slideIndex >= slides.length) {
+        slideIndex = 0;
+      }
+      if (slideIndex < 0) {
+        slideIndex = slides.length - 1;
+      }
+      for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+      }
+      slides[slideIndex].style.display = "block";
+      slideIndex++;
+      setTimeout(showSlides, 2000); // Change slide every 5m seconds
+    }
+  </script>
+</body>
+</html>

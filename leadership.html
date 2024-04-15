@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Work Showcase Slideshow</title>
+    <style>
+      .slideshow-container {
+        position: relative;
+        max-width: 800px;
+        margin: auto;
+        background-color: #f5b1b1;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 500px;
+      }
+
+      .slide {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+      }
+
+      .caption {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        color: white;
+        padding: 10px;
+      }
+
+      /* Next & previous buttons */
+      .prev,
+      .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        margin-top: -22px;
+        padding: 16px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        transition: 0.6s ease;
+        border-radius: 0 3px 3px 0;
+      }
+
+      .next {
+        right: 0;
+        border-radius: 3px 0 0 3px;
+      }
+
+      .prev:hover,
+      .next:hover {
+        background-color: rgba(0, 0, 0, 0.8);
+      }
+    </style>
+  </head>
+  <body>
+    <div class="slideshow-container">
+      <div class="slide fade">
+        <h1>Leadership and personal development:</h1>
+        <ul>
+          <h2>7 seven habits of high effective person</h2>
+          <h2>Be Proactive:</h2>
+          <li>
+            Effective individuals take responsibility for their actions and
+            choices. They understand that they have the power to control their
+            responses to external circumstances and don't let circumstances
+            dictate their behavior. Being proactive means focusing on what you
+            can influence or change, rather than dwelling on things beyond your
+            control.
+            <h2>Begin with the End in Mind:</h2>
+            Highly effective people have a clear sense of purpose and direction.
+            They set goals based on their values and vision for the future, and
+            they work towards those goals with intentionality. Beginning with
+            the end in mind involves envisioning your desired outcomes and then
+            aligning your actions with that vision.
+            <h2>Put First Things First:</h2>
+            Effective individuals prioritize their time and energy on activities
+            that align with their goals and values. They distinguish between
+            what is important and what is merely urgent, focusing on
+            high-priority tasks that contribute to long-term success. This habit
+            emphasizes time management, organization, and goal-setting.
+            <h2>Think Win-Win:</h2>
+            Successful people seek mutually beneficial outcomes in their
+            interactions and relationships. They believe in abundance rather
+            than scarcity and strive to create win-win solutions that satisfy
+            all parties involved. Thinking win-win requires empathy,
+            collaboration, and a mindset of abundance.
+            <h2>Seek First to Understand,</h2>
+            Then to Be Understood: Effective communicators listen empathetically
+            and seek to understand others before expressing their own
+            perspectives. They practice active listening, suspending judgment
+            and genuinely trying to see the world from the other person's point
+            of view. By understanding others first, they can communicate more
+            effectively and build stronger relationships.
+            <h2>Synergize:</h2>
+            Highly effective people value collaboration and teamwork. They
+            recognize that the whole is greater than the sum of its parts and
+            actively seek out opportunities to leverage the strengths and
+            talents of others. Synergy involves combining individual efforts to
+            achieve outcomes that are greater than what could be achieved alone.
+            <h2>Sharpen the Saw:</h2>
+            Effective individuals prioritize self-care and continuous
+            improvement. They recognize the importance of renewing their
+            physical, mental, emotional, and spiritual well-being regularly.
+            Sharpening the saw involves activities such as exercise, learning,
+            reflection, and relaxation that rejuvenate and energize individuals,
+            enabling them to perform at their best over the long term.
+          </li>
+        </ul>
+      </div>
+      <div class="slide fade">
+        <ul>
+          <h1>Roots of effectiveness</h1>
+          <li>
+            Personality <br />Character <br />Responsibility <br />Contribution
+            <br />The maturity continuer<br />
+            Dependence Put first things first <br />Interdependence
+          </li>
+          <h1>Principles of effectiveness</h1>
+          <li>
+            Responsibility<br />Choice<br />Accountability<br />Initiative<br />Resourcesfulness
+          </li>
+        </ul>
+      </div>
+      <div class="slide fade">
+        <ul>
+          <h1>4 Unique human gifts</h1>
+          <li>
+            Self awareness<br />Imagination<br />Conscience<br />Independent
+            will
+          </li>
+        </ul>
+      </div>
+
+      <!-- Next and previous buttons -->
+      <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <script>
+      let slideIndex = 0;
+      showSlides();
+
+      function plusSlides(n) {
+        showSlides((slideIndex += n));
+      }
+
+      function showSlides() {
+        let i;
+        let slides = document.getElementsByClassName("slide");
+        if (slideIndex >= slides.length) {
+          slideIndex = 0;
+        }
+        if (slideIndex < 0) {
+          slideIndex = slides.length - 1;
+        }
+        for (i = 0; i < slides.length; i++) {
+          slides[i].style.display = "none";
+        }
+        slides[slideIndex].style.display = "block";
+        slideIndex++;
+        setTimeout(showSlides, 2000); // Change slide every 2 seconds
+      }
+    </script>
+  </body>
+</html>

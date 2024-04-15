@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>To-Do App</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: #f4f4f4;
+    }
+
+    .todo-container {
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        padding: 20px;
+        width: 300px;
+    }
+
+    .todo-item {
+        margin-bottom: 10px;
+    }
+
+    .todo-item input[type="text"] {
+        width: calc(100% - 40px);
+        padding: 5px;
+        margin-right: 10px;
+    }
+
+    .btn {
+        background-color: #4caf50;
+        color: #fff;
+        border: none;
+        padding: 5px 10px;
+        cursor: pointer;
+        border-radius: 3px;
+    }
+
+    .btn:hover {
+        background-color: #45a049;
+    }
+
+    .btn-delete {
+        background-color: #f44336;
+    }
+</style>
+</head>
+<body>
+
+<div class="todo-container">
+    <h2>To-Do List</h2>
+    <div id="task-list"></div>
+    <div class="todo-item">
+        <input type="text" id="taskInput" placeholder="Add new task...">
+        <button onclick="addTask()" class="btn">Add Task</button>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        loadTasks();
+    });
+
+    function addTask() { 
+        const taskInput = document.getElementById('taskInput');
+        const task = taskInput.value.trim();
+        if (task !== '') {
+            const tasks = getTasks();
+            tasks.push({ id: Date.now(), text: task, completed: false });
+            localStorage.setItem('tasks', JSON.stringify(tasks));
+            loadTasks();
+            taskInput.value = '';
+        }
+    }
+
+    function loadTasks() {
+        const tasks = getTasks();
+        const taskList = document.getElementById('task-list');
+        taskList.innerHTML = '';
+        tasks.forEach(task => {
+            const taskItem = document.createElement('div');
+            taskItem.classList.add('todo-item');
+            taskItem.innerHTML = `
+                <input type="checkbox" ${task.completed ? 'checked' : ''} onclick="toggleComplete(${task.id})">
+                <span>${task.text}</span>
+                <button onclick="deleteTask(${task.id})" class="btn btn-delete">Delete</button>
+            `;
+            taskList.appendChild(taskItem);
+        });
+    }
+
+    function toggleComplete(id) {
+        const tasks = getTasks();
+        const index = tasks.findIndex(task => task.id === id);
+        tasks[index].completed = !tasks[index].completed;
+        localStorage.setItem('tasks', JSON.stringify(tasks));
+        loadTasks();
+    }
+
+    function deleteTask(id) {
+        const tasks = getTasks();
+        const filteredTasks = tasks.filter(task => task.id !== id);
+        localStorage.setItem('tasks', JSON.stringify(filteredTasks));
+        loadTasks();
+    }
+
+    function getTasks() {
+        return JSON.parse(localStorage.getItem('tasks')) || [];
+    }
+</script>
+
+</body>
+</html>
